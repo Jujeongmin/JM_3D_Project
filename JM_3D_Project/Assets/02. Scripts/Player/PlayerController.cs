@@ -1,16 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    // 움직임
     [Header("Movement")]
     public float moveSpeed;
     public float jumpPower;
     private Vector2 curMovementInput;
     public LayerMask groundLayerMask;
 
+    // 보기
     [Header("Look")]
     public Transform cameraContainer;
     public float minXLook;
@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        // 커서 안보이게 하기
         Cursor.lockState = CursorLockMode.Locked;
     }
 
