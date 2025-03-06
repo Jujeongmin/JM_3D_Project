@@ -8,7 +8,7 @@ public interface IInteractable
 
 public class ItemObject : MonoBehaviour, IInteractable
 {
-    public ItemData data;
+    public ItemData data;    
 
     public string GetInteractPrompt()
     {
@@ -18,8 +18,11 @@ public class ItemObject : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        CharacterManager.Instance.Player.itemData = data;
-        CharacterManager.Instance.Player.addItem?.Invoke();
-        Destroy(gameObject);
-    }
+        if (data.type == 0) // enum으로인해 0은 Consumable
+        {
+            CharacterManager.Instance.Player.itemData = data;
+            CharacterManager.Instance.Player.addItem?.Invoke();
+            Destroy(gameObject);
+        }
+    }       
 }

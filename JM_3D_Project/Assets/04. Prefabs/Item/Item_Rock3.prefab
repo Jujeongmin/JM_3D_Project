@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3705834758435708325}
   - component: {fileID: 6159296958876434870}
+  - component: {fileID: 3468939737096351270}
   m_Layer: 0
   m_Name: Item_Rock3
   m_TagString: Untagged
@@ -137,3 +138,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0157948, y: 1.0372136, z: 1}
   m_Center: {x: 0.007897377, y: 0.46679306, z: 0}
+--- !u!114 &3468939737096351270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5107328293011247395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d7587a90589564398af8d7f3e0ff58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  damageRate: 1

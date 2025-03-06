@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a108c5d4c49abcd42902436efa3dbc01, type: 3}
-  m_Name: Item_Cube
+  m_Name: SuperSpeed
   m_EditorClassIdentifier: 
-  displayName: "\uC548\uB155!"
-  description: "\uC810\uD504\uB294 Space, \uC774\uB3D9\uC740 WSAD\uC57C! \uAC74\uD22C\uB97C
-    \uBE4C\uAC8C!"
+  displayName: "\uC2A4\uD53C\uB4DC\uB300"
+  description: "\uB098\uB97C \uBC1F\uC73C\uBA74 \uBE68\uB77C\uC838!"
   type: 1
   icon: {fileID: 0}
   canStack: 0

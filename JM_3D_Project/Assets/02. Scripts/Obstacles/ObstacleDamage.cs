@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CampFire : MonoBehaviour
+public class ObstacleDamage : MonoBehaviour
 {
     public int damage;
     public float damageRate;
