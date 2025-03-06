@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,9 +8,11 @@ public class PlayerController : MonoBehaviour
     // 움직임
     [Header("Movement")]
     public float moveSpeed;
+    private float originalSpeed;
     public float jumpPower;
     private Vector2 curMovementInput;
     public LayerMask groundLayerMask;
+    public float superJump;
 
     // 보기
     [Header("Look")]
@@ -21,16 +25,19 @@ public class PlayerController : MonoBehaviour
     public bool canLook = true;
 
     private Rigidbody rb;
+    public Action inventory;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();        
     }
 
     private void Start()
     {
         // 커서 안보이게 하기
         Cursor.lockState = CursorLockMode.Locked;
+
+        originalSpeed = moveSpeed;
     }
 
     void FixedUpdate()
@@ -89,6 +96,27 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("SuperJump"))
+        {
+            rb.AddForce(Vector3.up * superJump, ForceMode.Impulse);
+        }
+
+        if (collision.gameObject.CompareTag("SuperSpeed"))
+        {
+            StartCoroutine(SuperSpeedBoost());
+        }
+    }
+
+    IEnumerator SuperSpeedBoost()
+    {
+        moveSpeed *= 2;
+        yield return new WaitForSeconds(2f);
+        moveSpeed = originalSpeed;
+    }
+
+   
     bool IsGrounded()
     {
         Ray[] rays = new Ray[4]
@@ -108,5 +136,21 @@ public class PlayerController : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void OnInvenTory(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Started)
+        {
+            inventory?.Invoke();
+            ToggleCursor();
+        }
+    }
+
+    private void ToggleCursor()
+    {
+        bool toggle = Cursor.lockState == CursorLockMode.Locked;
+        Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
+        canLook = !toggle;
     }
 }
