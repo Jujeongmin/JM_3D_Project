@@ -15,7 +15,7 @@ public class ObstacleDamage : MonoBehaviour
 
     void DealDamage()
     {
-        for (int i = 0; i < things.Count; i++) 
+        for (int i = 0; i < things.Count; i++)
         {
             things[i].TakePhysicalDamage(damage);
         }
@@ -23,7 +23,7 @@ public class ObstacleDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent(out IDamageable damageable))
+        if (other.TryGetComponent(out IDamageable damageable))
         {
             things.Add(damageable);
         }
@@ -31,7 +31,7 @@ public class ObstacleDamage : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.TryGetComponent(out IDamageable damageable))
+        if (other.TryGetComponent(out IDamageable damageable))
         {
             things.Remove(damageable);
         }

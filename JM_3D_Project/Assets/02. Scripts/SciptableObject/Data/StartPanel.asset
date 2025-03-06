@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: StartPanel
   m_EditorClassIdentifier: 
   displayName: "\uC548\uB155!"
-  description: "\uC810\uD504\uB294 Space, \uC774\uB3D9\uC740 WSAD\uC57C! \uAC74\uD22C\uB97C
-    \uBE4C\uAC8C!"
+  description: "\uC810\uD504\uB294 Space, \uC774\uB3D9\uC740 WSAD, \uC778\uBCA4\uD1A0\uB9AC\uB294
+    Tab\uD0A4\uC57C!"
   type: 1
   icon: {fileID: 0}
   canStack: 0
