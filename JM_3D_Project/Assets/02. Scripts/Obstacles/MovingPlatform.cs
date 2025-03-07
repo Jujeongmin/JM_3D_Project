@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
@@ -19,6 +17,7 @@ public class MovingPlatform : MonoBehaviour
     {
         Vertical,
         Horizontal,
+        Upper,
         UpperLeft_LowerRight,
         UpperRigth_LowerLeft
     }
@@ -37,6 +36,9 @@ public class MovingPlatform : MonoBehaviour
                 break;
             case MoveDirection.Horizontal:
                 dirVec = Vector3.right;
+                break;
+            case MoveDirection.Upper:
+                dirVec = Vector3.up;
                 break;
             case MoveDirection.UpperLeft_LowerRight:
                 dirVec = new Vector3(1, 0, -1).normalized;
