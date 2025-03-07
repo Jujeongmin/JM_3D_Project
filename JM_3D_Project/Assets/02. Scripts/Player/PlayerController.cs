@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     public bool isDead = false;
 
+    private Vector3 platformVelocity;
+    private Vector3 previousPlatformPosition;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -65,10 +68,24 @@ public class PlayerController : MonoBehaviour
         dir *= moveSpeed;
         dir.y = rb.velocity.y;
 
+        if (transform.parent != null)
+        {
+
+            Vector3 platformMovement = transform.parent.position - previousPlatformPosition;
+
+            // 상대적인 이동량만큼 플레이어에게 이동 보정 추가
+            dir += platformMovement / Time.deltaTime;  // 물리 시간에 맞춰 이동 보정 추가
+
+            // 이전 위치 갱신
+            previousPlatformPosition = transform.parent.position;
+
+            //dir += platformVelocity;
+        }
+
         rb.velocity = dir;
 
         bool isMoving = curMovementInput != Vector2.zero;
-        animator.SetBool("Moving",isMoving);
+        animator.SetBool("Moving", isMoving);
     }
 
     void CameraLook()
@@ -101,7 +118,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started && IsGrounded())
         {
-            rb.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);           
+            rb.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
             animator.SetTrigger("Jumping");
         }
     }
@@ -117,6 +134,21 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("SuperSpeed"))
         {
             StartCoroutine(SuperSpeedBoost());
+        }
+
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            transform.SetParent(collision.transform);
+            platformVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity;       
+            previousPlatformPosition = collision.transform.position;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            transform.SetParent(null);
         }
     }
 

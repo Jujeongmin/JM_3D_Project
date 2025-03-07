@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SuperJump
   - SuperSpeed
+  - Platform
   layers:
   - Default
   - TransparentFX
