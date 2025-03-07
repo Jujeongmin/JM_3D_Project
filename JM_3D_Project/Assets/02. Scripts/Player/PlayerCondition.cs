@@ -8,11 +8,27 @@ public interface IDamageable
 
 public class PlayerCondition : MonoBehaviour, IDamageable
 {
-    public UICondition uiCondition;
+    public UICondition uiCondition;    
+    public PlayerController playerController;
+    private Animator animator;
 
     Condition hp { get { return uiCondition.hp; } }
 
     public event Action onTakeDamage;
+
+    private void Start()
+    {
+        animator = GetComponentInChildren<Animator>();     
+        playerController = GetComponent<PlayerController>();
+    }
+
+    private void Update()
+    {
+        if(hp.curValue <= 0)
+        {
+            Die();
+        }
+    }
 
     public void Heal(float amount)
     {
@@ -21,7 +37,11 @@ public class PlayerCondition : MonoBehaviour, IDamageable
 
     public void Die()
     {
-        Debug.Log("»ç¸Á");
+        if (!playerController.isDead)
+        {
+            playerController.isDead = true;
+            animator.SetTrigger("IsDead");
+        }
     }
 
     public void TakePhysicalDamage(int damage)

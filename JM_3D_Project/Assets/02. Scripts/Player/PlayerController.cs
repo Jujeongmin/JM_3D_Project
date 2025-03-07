@@ -26,10 +26,13 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     public Action inventory;
+    private Animator animator;
+    public bool isDead = false;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();        
+        rb = GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Start()
@@ -42,12 +45,15 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Move();
+        if (!isDead)
+        {
+            Move();
+        }
     }
 
     private void LateUpdate()
     {
-        if (canLook)
+        if (canLook && !isDead)
         {
             CameraLook();
         }
@@ -60,6 +66,9 @@ public class PlayerController : MonoBehaviour
         dir.y = rb.velocity.y;
 
         rb.velocity = dir;
+
+        bool isMoving = curMovementInput != Vector2.zero;
+        animator.SetBool("Moving",isMoving);
     }
 
     void CameraLook()
@@ -92,7 +101,8 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started && IsGrounded())
         {
-            rb.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
+            rb.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);           
+            animator.SetTrigger("Jumping");
         }
     }
 
@@ -101,6 +111,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("SuperJump"))
         {
             rb.AddForce(Vector3.up * superJump, ForceMode.Impulse);
+            animator.SetTrigger("SuperJumping");
         }
 
         if (collision.gameObject.CompareTag("SuperSpeed"))
@@ -111,12 +122,13 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator SuperSpeedBoost()
     {
+        animator.SetTrigger("SuperSpeeding");
         moveSpeed *= 2;
         yield return new WaitForSeconds(2f);
         moveSpeed = originalSpeed;
     }
 
-   
+
     bool IsGrounded()
     {
         Ray[] rays = new Ray[4]
@@ -140,7 +152,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnInvenTory(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Started)
+        if (context.phase == InputActionPhase.Started)
         {
             inventory?.Invoke();
             ToggleCursor();

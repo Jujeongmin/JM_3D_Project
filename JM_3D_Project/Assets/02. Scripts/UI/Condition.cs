@@ -7,17 +7,17 @@ public class Condition : MonoBehaviour
     public float curValue;
     public float startValue;
     public float maxValue;
-    public Image uiBar;
+    public Image uiBar;    
 
     void Start()
     {
         // 현재체력을 시작체력으로
-        curValue = startValue;     
+        curValue = startValue;
     }
 
     void Update()
     {
-        uiBar.fillAmount = GetPercentage();
+        uiBar.fillAmount = GetPercentage();        
     }
 
     //// 현재체력을 반환하는 함수
