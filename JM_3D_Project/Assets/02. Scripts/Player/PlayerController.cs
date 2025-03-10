@@ -70,16 +70,9 @@ public class PlayerController : MonoBehaviour
 
         if (transform.parent != null)
         {
-
             Vector3 platformMovement = transform.parent.position - previousPlatformPosition;
-
-            // 상대적인 이동량만큼 플레이어에게 이동 보정 추가
-            dir += platformMovement / Time.deltaTime;  // 물리 시간에 맞춰 이동 보정 추가
-
-            // 이전 위치 갱신
+            dir += platformMovement / Time.deltaTime;
             previousPlatformPosition = transform.parent.position;
-
-            //dir += platformVelocity;
         }
 
         rb.velocity = dir;
@@ -120,6 +113,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
             animator.SetTrigger("Jumping");
+            SoundManager.instance.PlaySfx(SoundManager.ESfx.SFXJump);
         }
     }
 
@@ -129,6 +123,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector3.up * superJump, ForceMode.Impulse);
             animator.SetTrigger("SuperJumping");
+            SoundManager.instance.PlaySfx(SoundManager.ESfx.SFXJump);
         }
 
         if (collision.gameObject.CompareTag("SuperSpeed"))
@@ -139,7 +134,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Platform"))
         {
             transform.SetParent(collision.transform);
-            platformVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity;       
+            platformVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity;
             previousPlatformPosition = collision.transform.position;
         }
     }
@@ -187,6 +182,7 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Started)
         {
             inventory?.Invoke();
+            SoundManager.instance.PlaySfx(SoundManager.ESfx.SFXInventory);
             ToggleCursor();
         }
     }
