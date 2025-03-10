@@ -48,7 +48,6 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     public void TakePhysicalDamage(int damage)
     {
         hp.Subtract(damage);
-        onTakeDamage?.Invoke();
+        onTakeDamage?.Invoke();        
     }
-
 }
