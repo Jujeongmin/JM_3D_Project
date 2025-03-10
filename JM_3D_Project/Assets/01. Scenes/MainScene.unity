@@ -17056,7 +17056,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1386518835143809180, guid: f8f39846124650042a4f0bda6099aac9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.74
+      value: 10.731
       objectReference: {fileID: 0}
     - target: {fileID: 1386518835143809180, guid: f8f39846124650042a4f0bda6099aac9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -17064,7 +17064,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1386518835143809180, guid: f8f39846124650042a4f0bda6099aac9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.79
+      value: 11.54
       objectReference: {fileID: 0}
     - target: {fileID: 4302774032381365165, guid: f8f39846124650042a4f0bda6099aac9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17080,7 +17080,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6642701014439870106, guid: f8f39846124650042a4f0bda6099aac9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 34.07
+      value: 32.29
       objectReference: {fileID: 0}
     - target: {fileID: 6642701014439870106, guid: f8f39846124650042a4f0bda6099aac9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18863,7 +18863,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\uCD95\uD558\uD569\uB2C8\uB2E4!\n\uB2F9\uC2E0\uC740 \uD558\uB298\uB85C
-    \uB0A0\uC544\uAC00 \uC790\uC720\uB97C \uC5BB\uC5C8\uC2B5\uB2C8\uB2E4."
+    \uB0A0\uC544\uAC00 \uC790\uC720\uB97C \uC5BB\uC5C8\uC2B5\uB2C8\uB2E4!!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b8ebee4609e755146bf65f6d3f338496, type: 2}
   m_sharedMaterial: {fileID: -5132540435051365432, guid: b8ebee4609e755146bf65f6d3f338496, type: 2}

@@ -40,6 +40,7 @@ public class VolumeSetting : MonoBehaviour
 
     public void Active()
     {
+        SoundManager.Instance.PlaySFX("Button");
         settingMenu.SetActive(!settingMenu.activeSelf);
     }
 }
