@@ -166,7 +166,7 @@ public class UIInventory : MonoBehaviour
 
     public void OnUseButton()
     {
-        SoundManager.Instance.PlaySFX("Coin");
+        SoundManager.Instance.PlaySFX("Button");
         if(selectedItem.type == ItemType.Consumable)
         {
             for(int i = 0; i < selectedItem.consumables.Length; i++)
@@ -183,6 +183,7 @@ public class UIInventory : MonoBehaviour
         else if(selectedItem.type == ItemType.EndingItem)
         {
             CharacterManager.Instance.Player.condition.uiCondition.GameEnding();
+            SoundManager.Instance.PlaySFX("Ending");
             RemoveSelectedItem();
         }
     }

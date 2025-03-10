@@ -111,6 +111,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started && IsGrounded())
         {
+            SoundManager.Instance.PlaySFX("Jump");
             rb.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
             animator.SetTrigger("Jumping");
         }
@@ -120,6 +121,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("SuperJump"))
         {
+            SoundManager.Instance.PlaySFX("Jump");
             rb.AddForce(Vector3.up * superJump, ForceMode.Impulse);
             animator.SetTrigger("SuperJumping");
         }
@@ -179,6 +181,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started)
         {
+            SoundManager.Instance.PlaySFX("Inventory");
             inventory?.Invoke();
             ToggleCursor();
         }

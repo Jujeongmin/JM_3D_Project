@@ -20,7 +20,8 @@ public class FootStep : MonoBehaviour
             {
                 if(Time.time - footStepTime > footStepRate)
                 {
-                    footStepTime = Time.time;                                       
+                    footStepTime = Time.time;
+                    SoundManager.Instance.PlaySFX("Step");
                 }
             }
         }

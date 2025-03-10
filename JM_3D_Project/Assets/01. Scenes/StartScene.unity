@@ -457,7 +457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ecb657a4f347440b687f54c3cfa5f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingMenu: {fileID: 812429718}
 --- !u!114 &138856752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,6 +473,7 @@ MonoBehaviour:
   masterSlider: {fileID: 1198618951}
   bgmSlider: {fileID: 1716933040}
   sfxSlider: {fileID: 1637333618}
+  settingMenu: {fileID: 812429718}
 --- !u!1 &225585195
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,8 +924,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 138856751}
-        m_TargetAssemblyTypeName: StartSceneUI, Assembly-CSharp
+      - m_Target: {fileID: 138856752}
+        m_TargetAssemblyTypeName: VolumeSetting, Assembly-CSharp
         m_MethodName: Active
         m_Mode: 1
         m_Arguments:
@@ -1219,6 +1219,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: fe0c2ccec65f6b349a2dd833ff74ad6a, type: 3}
   - name: Step
     clip: {fileID: 8300000, guid: f29f38e20d32f5943a1f08658db66f31, type: 3}
+  - name: Ending
+    clip: {fileID: 8300000, guid: 1cd2b4d4d3cd0324caf0ba46d7882582, type: 3}
   myMixer: {fileID: 24100000, guid: f1fa52acbcc144e43b4acf7bfffc4e18, type: 2}
   bgmSource: {fileID: 316990535}
   sfxSource: {fileID: 1797888669}
@@ -2648,8 +2650,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 138856751}
-        m_TargetAssemblyTypeName: StartSceneUI, Assembly-CSharp
+      - m_Target: {fileID: 138856752}
+        m_TargetAssemblyTypeName: VolumeSetting, Assembly-CSharp
         m_MethodName: Active
         m_Mode: 1
         m_Arguments:

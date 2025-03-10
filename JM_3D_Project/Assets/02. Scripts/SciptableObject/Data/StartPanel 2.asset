@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a108c5d4c49abcd42902436efa3dbc01, type: 3}
+  m_Name: StartPanel 2
+  m_EditorClassIdentifier: 
+  displayName: "\uB108\uB294 \uC5B4\uB290 \uB0A0 \uAC11\uC790\uAE30 \uC800\uC8FC\uB97C
+    \uBC1B\uC544 \uB0A0\uC9C0 \uBABB\uD558\uAC8C \uB410\uC5B4"
+  description: "\uADF8\uB7F0\uB370 \uC2E0\uBE44\uD55C \uBC84\uC12F\uC744 \uBA39\uC73C\uBA74
+    \uB0A0 \uC218 \uC788\uB2E4\uB294 \uC598\uAE30\uB97C \uB4E4\uC5C8\uC5B4 \uBC84\uC12F\uC744
+    \uCC3E\uC73C\uB7EC \uAC00\uBCFC\uAE4C?"
+  type: 1
+  icon: {fileID: 0}
+  canStack: 0
+  maxStackAmount: 0
+  consumables: []

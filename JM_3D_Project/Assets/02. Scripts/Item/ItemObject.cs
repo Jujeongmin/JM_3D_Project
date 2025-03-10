@@ -20,6 +20,7 @@ public class ItemObject : MonoBehaviour, IInteractable
     {
         if (data.type != ItemType.Structure)
         {
+            SoundManager.Instance.PlaySFX("Coin");
             CharacterManager.Instance.Player.itemData = data;
             CharacterManager.Instance.Player.addItem?.Invoke();
             Destroy(gameObject);

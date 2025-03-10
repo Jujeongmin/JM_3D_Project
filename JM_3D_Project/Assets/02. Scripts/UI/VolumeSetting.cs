@@ -6,6 +6,7 @@ public class VolumeSetting : MonoBehaviour
 {
     [SerializeField] private AudioMixer myMixer;
     [SerializeField] private Slider masterSlider, bgmSlider, sfxSlider;
+    [SerializeField] private GameObject settingMenu;
 
     private void Start()
     {
@@ -35,5 +36,10 @@ public class VolumeSetting : MonoBehaviour
         float volume = sfxSlider.value;
         myMixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("SFXVolume", volume);
+    }
+
+    public void Active()
+    {
+        settingMenu.SetActive(!settingMenu.activeSelf);
     }
 }
