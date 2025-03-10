@@ -1,36 +1,26 @@
+using System;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager instance;
+    public static SoundManager Instance;
 
-    public enum EBgm
-    {
-        BGMTitle,
-        BGMGame
-    }
+    public Sound[] bgmSounds, sfxSounds;
+    public AudioMixer myMixer;
+    public AudioSource bgmSource, sfxSource;
 
-    public enum ESfx
-    {
-        SFXButton,
-        SFXJump,
-        SFXWalk,
-        SFXCoin,
-        SFXInventory
-    }
-
-    [SerializeField] AudioClip[] bgms;
-    [SerializeField] AudioClip[] sfxs;
-
-    [SerializeField] AudioSource audioBgm;
-    [SerializeField] AudioSource audioSfx;
+    public float MasterValue { get; private set; }
+    public float BgmValue { get; private set; }
+    public float SFXValue { get; private set; }
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
+            PlayMusic("Background");
         }
         else
         {
@@ -38,24 +28,82 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void PlayMusic(string name)
     {
-        PlayBgm(EBgm.BGMGame);
+        if (PlayerPrefs.HasKey("MasterVolume"))
+        {
+            MasterValue = PlayerPrefs.GetFloat("MasterVolume");
+            myMixer.SetFloat("Master", Mathf.Log10(MasterValue) * 20);
+        }
+        else
+        {
+            MasterValue = 0.5f;
+        }
+
+        if (PlayerPrefs.HasKey("BGMVolume"))
+        {
+            BgmValue = PlayerPrefs.GetFloat("BGMVolume");
+            myMixer.SetFloat("BGM", Mathf.Log10(BgmValue) * 20);
+        }
+        else
+        {
+            BgmValue = 0.5f;
+        }
+
+        if (PlayerPrefs.HasKey("SFXVolume"))
+        {
+            SFXValue = PlayerPrefs.GetFloat("SFXVolume");
+            myMixer.SetFloat("SFX", Mathf.Log10(PlayerPrefs.GetFloat("SFXValue")) * 20);
+        }
+        else
+        {
+            SFXValue = 0.5f;
+        }
+
+
+        Sound s = Array.Find(bgmSounds, x => x.name == name);
+        if (s == null)
+        {
+            Debug.Log("Sound Not Found");
+        }
+        else
+        {
+            bgmSource.clip = s.clip;
+            bgmSource.loop = true;
+            bgmSource.Play();
+        }
     }
 
-    public void PlayBgm(EBgm bgmIdx)
+    public void PlaySFX(string name)
     {
-        audioBgm.clip = bgms[(int) bgmIdx];
-        audioBgm.Play();
+        Sound s = Array.Find(sfxSounds, x => x.name == name);
+        if (s == null)
+        {
+            Debug.Log("Sound Not Found");
+        }
+        else
+        {
+            sfxSource.PlayOneShot(s.clip);
+        }
     }
 
-    public void StopBgm()
+    public void ToggleMusic()
     {
-        audioBgm.Stop();
+        bgmSource.mute = !bgmSource.mute;
     }
 
-    public void PlaySfx(ESfx esfxIdx)
+    public void ToggleSFX()
     {
-        audioSfx.PlayOneShot(sfxs[(int) esfxIdx]);
+        sfxSource.mute = !sfxSource.mute;
+    }
+
+    public void MusicVolume(float volume)
+    {
+        bgmSource.volume = volume;
+    }
+
+    public void SFXVolume(float volume)
+    {
+        sfxSource.volume = volume;
     }
 }

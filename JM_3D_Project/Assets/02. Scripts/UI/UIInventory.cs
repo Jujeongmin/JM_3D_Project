@@ -161,11 +161,12 @@ public class UIInventory : MonoBehaviour
             selectedStatValue.text += selectedItem.consumables[i].value.ToString() + "\n";
         }
 
-        useButton.SetActive(selectedItem.type == ItemType.Consumable);
+        useButton.SetActive(selectedItem.type == ItemType.Consumable || selectedItem.type == ItemType.EndingItem);
     }
 
     public void OnUseButton()
     {
+        SoundManager.Instance.PlaySFX("Coin");
         if(selectedItem.type == ItemType.Consumable)
         {
             for(int i = 0; i < selectedItem.consumables.Length; i++)
@@ -177,6 +178,11 @@ public class UIInventory : MonoBehaviour
                         break;                        
                 }
             }
+            RemoveSelectedItem();
+        }        
+        else if(selectedItem.type == ItemType.EndingItem)
+        {
+            CharacterManager.Instance.Player.condition.uiCondition.GameEnding();
             RemoveSelectedItem();
         }
     }

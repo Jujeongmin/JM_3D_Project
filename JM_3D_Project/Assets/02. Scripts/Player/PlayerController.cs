@@ -113,7 +113,6 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
             animator.SetTrigger("Jumping");
-            SoundManager.instance.PlaySfx(SoundManager.ESfx.SFXJump);
         }
     }
 
@@ -123,7 +122,6 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector3.up * superJump, ForceMode.Impulse);
             animator.SetTrigger("SuperJumping");
-            SoundManager.instance.PlaySfx(SoundManager.ESfx.SFXJump);
         }
 
         if (collision.gameObject.CompareTag("SuperSpeed"))
@@ -182,12 +180,11 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Started)
         {
             inventory?.Invoke();
-            SoundManager.instance.PlaySfx(SoundManager.ESfx.SFXInventory);
             ToggleCursor();
         }
     }
 
-    private void ToggleCursor()
+    public void ToggleCursor()
     {
         bool toggle = Cursor.lockState == CursorLockMode.Locked;
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;

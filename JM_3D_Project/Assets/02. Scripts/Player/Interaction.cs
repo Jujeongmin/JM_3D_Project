@@ -61,7 +61,6 @@ public class Interaction : MonoBehaviour
             curInteractGameObject = null;
             curInteractable = null;
             promptText.gameObject.SetActive(false);
-            SoundManager.instance.PlaySfx(SoundManager.ESfx.SFXCoin);
         }
     }
 }

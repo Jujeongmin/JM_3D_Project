@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -13,6 +14,6 @@ public class Player : MonoBehaviour
     {
         CharacterManager.Instance.Player = this;
         controller = GetComponent<PlayerController>();
-        condition = GetComponent<PlayerCondition>();
-    }
+        condition = GetComponent<PlayerCondition>();        
+    }   
 }

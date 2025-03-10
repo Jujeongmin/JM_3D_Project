@@ -41,6 +41,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         {
             playerController.isDead = true;
             animator.SetTrigger("IsDead");
+            CharacterManager.Instance.Player.condition.uiCondition.SetRestart();
         }
     }
 

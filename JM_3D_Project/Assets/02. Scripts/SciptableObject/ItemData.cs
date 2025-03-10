@@ -3,7 +3,8 @@ using UnityEngine;
 public enum ItemType
 {
     Consumable, // 먹을 수 있는거
-    Structure  // 구조물
+    Structure,  // 구조물
+    EndingItem // 엔딩아이템
 }
 
 public enum ConsumableType

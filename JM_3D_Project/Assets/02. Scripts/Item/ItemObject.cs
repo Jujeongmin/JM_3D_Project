@@ -18,7 +18,7 @@ public class ItemObject : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        if (data.type == 0) // enum으로인해 0은 Consumable
+        if (data.type != ItemType.Structure)
         {
             CharacterManager.Instance.Player.itemData = data;
             CharacterManager.Instance.Player.addItem?.Invoke();

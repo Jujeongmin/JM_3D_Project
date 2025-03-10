@@ -20,8 +20,7 @@ public class FootStep : MonoBehaviour
             {
                 if(Time.time - footStepTime > footStepRate)
                 {
-                    footStepTime = Time.time;                    
-                    SoundManager.instance.PlaySfx(SoundManager.ESfx.SFXWalk);                    
+                    footStepTime = Time.time;                                       
                 }
             }
         }
