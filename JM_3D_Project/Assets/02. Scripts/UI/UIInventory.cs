@@ -72,6 +72,10 @@ public class UIInventory : MonoBehaviour
     private void AddItem()
     {
         ItemData data = CharacterManager.Instance.Player.itemData;
+        if(data == null)
+        {
+            Debug.Log("data is null");
+        }
 
         if (data.canStack)
         {
